@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button";
 import Article from "./components/Article";
+import Props from "./components/Props";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+//app sebagai parent
 function App() {
   const [count, setCount] = useState(0);
 
@@ -30,7 +32,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Article />
+      <Article name="dieo" titles={["VueJs", "NextJs", "NodeJS"]} />
+      {/* <Props name="Dieo" /> */}
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <Button variant="default" size="lg">
           Tombol Shadcn (JS)
