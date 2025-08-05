@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Article from "../components/Article";
 import Blog from "../components/Blog";
@@ -22,6 +22,32 @@ function Home() {
     //hitung data yg dicari ada berapa yg sama
     setTotalPosts(filteredPosts.length);
   };
+
+  // dulu menggunakan 3 class lifecycle
+  //artinya ketika compoenent ini di render
+  //ComponentDidMount
+  // ini ketika ada state yg berubah
+  //ComponentDidUpdate
+  // ketika component akan ditutup / dihancurkan
+  //ComponentWillUnmount
+  // dengan react hook bisa mencapai 3 lifecycle ini yaitu nama nya
+  // useEffect buktinya apa silahkan cek di console log berikut akan muncul 2
+  // console.log("render 2");
+
+  useEffect(() => {
+    console.log("render");
+    //masukkan state apa yg mau kita pantau
+    const intervalId = setInterval(() => {
+      console.log("Interval running");
+    }, 1000);
+    return () => {
+      clearInterval(intervalId);
+      removeEventListener;
+      // ini adalah CompoenentWillUnmount
+      console.log("Cleanup");
+    };
+    //dan ini adalah componentDidUpdate
+  }, [posts]);
 
   return (
     <>

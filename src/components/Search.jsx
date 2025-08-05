@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Search(props) {
   const [search, setSearch] = useState("");
@@ -23,6 +23,17 @@ function Search(props) {
   const handleClick = () => {
     console.log("test");
   };
+
+  useEffect(() => {
+    // Pasang event listener saat mount
+    window.addEventListener("keydown", searchKeydown);
+
+    // Cleanup (componentWillUnmount)
+    return () => {
+      window.removeEventListener("keydown", searchKeydown);
+      console.log("Cleanup: removed keydown listener");
+    };
+  }, [search]); // tergantung state yang digunakan di dalam event handler
 
   return (
     <>
