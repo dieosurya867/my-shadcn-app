@@ -3,16 +3,37 @@ import { useState } from "react";
 function Search(props) {
   const [search, setSearch] = useState("");
 
-  const changeSearch = (event) => {
+  const changeSearchInput = (event) => {
     // console.log(event.target.value);
     setSearch(event.target.value);
     props.onSearchChange(event.target.value);
   };
 
+  const changeSearchButton = () => {
+    props.onSearchChange(search);
+  };
+
+  //   jika melakukan event keyboard = enter maka jalankan onSearchChange
+  const searchKeydown = (e) => {
+    if (e.key === "Enter") {
+      changeSearchButton();
+    }
+  };
+
+  const handleClick = () => {
+    console.log("test");
+  };
+
   return (
     <>
       <div>
-        Cari Artikel : <input onChange={changeSearch} type="text" />
+        Cari Artikel :{" "}
+        <input
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={searchKeydown}
+          type="text"
+        />
+        <button onClick={changeSearchButton}>Cari</button>
       </div>
       {/* dari hardcode saya buat dinamis */}
       <small>
