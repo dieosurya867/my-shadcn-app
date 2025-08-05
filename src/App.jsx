@@ -11,6 +11,8 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
+  const value = false;
+
   return (
     <>
       {/* <div>
@@ -33,6 +35,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
+      {value ? "benar" : "Salah"}
       <Home />
       {/* <Article name="dieo" titles={["VueJs", "NextJs", "NodeJS"]} /> */}
       {/* <Props name="Dieo" /> */}

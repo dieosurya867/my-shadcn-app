@@ -14,7 +14,10 @@ function Search(props) {
       <div>
         Cari Artikel : <input onChange={changeSearch} type="text" />
       </div>
-      <small>Ditemukan 0 data dengan pencarian kata {search}</small>
+      {/* dari hardcode saya buat dinamis */}
+      <small>
+        Ditemukan {props.totalPosts} data dengan pencarian kata {search}
+      </small>
     </>
   );
 }
