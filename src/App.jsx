@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Button } from "./components/ui/button";
 import Article from "./components/Article";
-import Home from "./pages/Home";
+
 import Props from "./components/Props";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { GlobalContext } from "./context/index";
+import { router } from "./routers";
+import { RouterProvider } from "react-router-dom";
 
 //app sebagai parent
 function App() {
@@ -42,7 +44,7 @@ function App() {
       <div className="App">
         // menggunakan context untuk mengambil data sementara
         <GlobalContext.Provider value={user}>
-          <Home />
+          <RouterProvider router={router} />
         </GlobalContext.Provider>
       </div>
       {/* <Article name="dieo" titles={["VueJs", "NextJs", "NodeJS"]} /> */}
