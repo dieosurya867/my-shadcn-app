@@ -10,6 +10,7 @@ function Home() {
   const [posts, setPosts] = useState(postsData);
   //initial value total data yg dicari 0
   const [totalPosts, setTotalPosts] = useState(0);
+  const [externalPosts, setExternalPosts] = useState([]);
 
   const onSearchChange = (value) => {
     console.log(value);
@@ -35,6 +36,12 @@ function Home() {
   // console.log("render 2");
 
   useEffect(() => {
+    //menjalankan fetch data 1 kali ketika halaman ini dirender
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      //setelah mengambil data fetching dibuat menjadi json
+      .then((response) => response.json())
+      //dan data json kita masukkan ke useState / mengupdate state externalPosts
+      .then((json) => setExternalPosts(json));
     console.log("render");
     //masukkan state apa yg mau kita pantau
     const intervalId = setInterval(() => {
@@ -47,7 +54,7 @@ function Home() {
       console.log("Cleanup");
     };
     //dan ini adalah componentDidUpdate
-  }, [posts]);
+  }, []);
 
   return (
     <>
@@ -58,6 +65,12 @@ function Home() {
         // <Blog key={index} title={title} tags={tags} date={date} />
         //  {posts.map(({ title, tags, date }, index) => (
         <Blog {...props} key={index} />
+      ))}
+      <hr />
+      <h2>External Posts</h2>
+      {/* kita tampilkan data externalPosts */}
+      {externalPosts.map((item, index) => (
+        <div key={index}>{item.title}</div>
       ))}
     </>
   );
