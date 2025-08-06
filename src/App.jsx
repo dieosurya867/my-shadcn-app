@@ -6,10 +6,13 @@ import Props from "./components/Props";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { GlobalContext } from "./context/index";
 
 //app sebagai parent
 function App() {
-  const [count, setCount] = useState(0);
+  const user = {
+    username: "Dieo",
+  };
 
   const value = false;
 
@@ -36,7 +39,12 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       {value ? "benar" : "Salah"}
-      <Home />
+      <div className="App">
+        // menggunakan context untuk mengambil data sementara
+        <GlobalContext.Provider value={user}>
+          <Home />
+        </GlobalContext.Provider>
+      </div>
       {/* <Article name="dieo" titles={["VueJs", "NextJs", "NodeJS"]} /> */}
       {/* <Props name="Dieo" /> */}
       <div className="min-h-screen flex items-center justify-center bg-gray-100">

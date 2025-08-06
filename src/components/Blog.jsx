@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context";
+
 // conditional rendering dengan component
 const ArticleStatus = ({ isNew }) => {
   return isNew && <span>== Baru !!!</span>;
@@ -9,6 +12,8 @@ const NewArticle = () => {
 };
 
 function Blog(props) {
+  const user = useContext(GlobalContext);
+
   return (
     <>
       <h3>{props.title}</h3>
@@ -20,6 +25,9 @@ function Blog(props) {
         {/* <ArticleStatus isNew={props.isNew} /> */}
         {props.isNew && <NewArticle />}
       </small>
+      <div>
+        <small>Ditulis oleh {user.username}</small>
+      </div>
     </>
   );
 }
