@@ -36,13 +36,14 @@ function Home() {
   // console.log("render 2");
 
   useEffect(() => {
+    console.log("ada posts baru");
+
     //menjalankan fetch data 1 kali ketika halaman ini dirender
     fetch("https://jsonplaceholder.typicode.com/posts")
       //setelah mengambil data fetching dibuat menjadi json
       .then((response) => response.json())
       //dan data json kita masukkan ke useState / mengupdate state externalPosts
       .then((json) => setExternalPosts(json));
-    console.log("render");
     //masukkan state apa yg mau kita pantau
     const intervalId = setInterval(() => {
       console.log("Interval running");
@@ -55,6 +56,15 @@ function Home() {
     };
     //dan ini adalah componentDidUpdate
   }, []);
+
+  //gunakan Mutiple UseEffect agar tidak melakukan fetch data secara terus menerus
+  useEffect(() => {
+    console.log("ada post baru");
+  }, [posts]);
+
+  useEffect(() => {
+    console.log("render");
+  });
 
   return (
     <>
