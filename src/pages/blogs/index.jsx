@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 function Blog() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((json) => setPosts(json));
-  }, []);
+  // gunakan loader agar tidak melihat delay nge load data atau kelihatan jeda di halaman
+  const posts = useLoaderData();
 
   return (
     <>
