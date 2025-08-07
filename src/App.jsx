@@ -42,7 +42,7 @@ function App() {
       </p> */}
       {value ? "benar" : "Salah"}
       <div className="App">
-        // menggunakan context untuk mengambil data sementara
+        {/* menggunakan context untuk mengambil data sementara */}
         <GlobalContext.Provider value={user}>
           <RouterProvider router={router} />
         </GlobalContext.Provider>
