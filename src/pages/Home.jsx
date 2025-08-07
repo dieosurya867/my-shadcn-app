@@ -39,11 +39,11 @@ function Home() {
     console.log("ada posts baru");
 
     //menjalankan fetch data 1 kali ketika halaman ini dirender
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      //setelah mengambil data fetching dibuat menjadi json
-      .then((response) => response.json())
-      //dan data json kita masukkan ke useState / mengupdate state externalPosts
-      .then((json) => setExternalPosts(json));
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //setelah mengambil data fetching dibuat menjadi json
+    // .then((response) => response.json())
+    //dan data json kita masukkan ke useState / mengupdate state externalPosts
+    // .then((json) => setExternalPosts(json));
     //masukkan state apa yg mau kita pantau
     const intervalId = setInterval(() => {
       console.log("Interval running");
