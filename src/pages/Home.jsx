@@ -58,13 +58,13 @@ function Home() {
   }, []);
 
   //gunakan Mutiple UseEffect agar tidak melakukan fetch data secara terus menerus
-  useEffect(() => {
-    console.log("ada post baru");
-  }, [posts]);
+  // useEffect(() => {
+  //   console.log("ada post baru");
+  // }, [posts]);
 
-  useEffect(() => {
-    console.log("render");
-  });
+  // useEffect(() => {
+  //   console.log("render");
+  // });
 
   return (
     <>
@@ -77,11 +77,11 @@ function Home() {
         <Blog {...props} key={index} />
       ))}
       <hr />
-      <h2>External Posts</h2>
+      {/* <h2>External Posts</h2> */}
       {/* kita tampilkan data externalPosts */}
-      {externalPosts.map((item, index) => (
+      {/* {externalPosts.map((item, index) => (
         <div key={index}>{item.title}</div>
-      ))}
+      ))} */}
     </>
   );
 }
